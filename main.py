@@ -21,7 +21,7 @@ class SentimentResponse(BaseModel):
 
 @app.get("/")
 def root():
-    return {"message": "Sentiment API is running. See /docs for usage."}
+    return {"message": "Sentiment API is running. Deployed on Render!"}
 
 @app.get("/health")
 def health():
@@ -40,6 +40,7 @@ def predict(request: SentimentRequest):
         confidence = float(pipeline.predict_proba([request.text]).max())
 
     return SentimentResponse(sentiment=label, confidence=confidence)
+
 
 import logging
 import time
